@@ -4,7 +4,7 @@
 .PHONY: run build test lint clean
 # Variables
 
-APP_NAME=org_struct_api
+APP_NAME=SQL_Converter_api
 
 # MAKE Commands
 
@@ -21,7 +21,7 @@ test:
 	go test -v ./...
 
 up:
-	docker-compose up -d
+	docker-compose up --build -d
 
 down:
 	docker-compose down
