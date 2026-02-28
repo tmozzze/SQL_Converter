@@ -1,5 +1,6 @@
 package models
 
+// DataType - represent a data type
 type DataType int
 
 const (
@@ -10,6 +11,7 @@ const (
 	DataTypeString
 )
 
+// String - return a DataType string
 func (d DataType) String() string {
 	switch d {
 	case DataTypeInteger:
