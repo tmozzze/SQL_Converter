@@ -17,6 +17,7 @@ type FileParserService interface {
 	Parse(r io.Reader, extension string) ([][]string, error)
 }
 
+// SchemaAnalyzerService - interface for schema analyzer buisness logic
 type SchemaAnalyzerService interface {
 	Analyze(tableName string, data [][]string) (models.Table, error)
 }

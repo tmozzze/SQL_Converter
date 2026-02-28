@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 
 	"github.com/tmozzze/SQL_Converter/internal/config"
+	"github.com/tmozzze/SQL_Converter/internal/repository/postgres"
+	"github.com/tmozzze/SQL_Converter/pkg/database"
 )
 
 const (
@@ -24,8 +27,16 @@ func main() {
 	log.Debug("debug messages are enabled")
 
 	// Init DB
+	db, err := database.NewPostgresDB(cfg.Postgres)
+	if err != nil {
+		log.Error("failed to init database", slog.Any("err", err))
+		os.Exit(1)
+	}
+	log.Info("database is initialized")
 
 	// Init Repos
+	repo := postgres.NewRepository(db, log)
+	fmt.Println(repo)
 
 	// Init Service
 

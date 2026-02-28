@@ -7,18 +7,21 @@ import (
 	"github.com/tmozzze/SQL_Converter/internal/domain"
 )
 
-type Repository struct {
+// Repository - main repository struct
+type repository struct {
 	table domain.TableRepository
 	log   *slog.Logger
 }
 
-func NewRepository(db *sql.DB, log *slog.Logger) *Repository {
-	return &Repository{
+// NewRepository - constructor for Repository
+func NewRepository(db *sql.DB, log *slog.Logger) *repository {
+	return &repository{
 		table: newTableRepository(db, log),
 		log:   log,
 	}
 }
 
-func (r *Repository) Table() domain.TableRepository {
+// Table - return TableRepository
+func (r *repository) Table() domain.TableRepository {
 	return r.table
 }

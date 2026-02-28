@@ -11,7 +11,7 @@ func mapDataType(t models.DataType) string {
 	case models.DataTypeBoolean:
 		return "BOOLEAN"
 	case models.DataTypeString:
-		return "TEXT" // TEXT гибче, чем VARCHAR(255)
+		return "TEXT"
 	default:
 		return "TEXT"
 	}
