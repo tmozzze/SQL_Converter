@@ -72,7 +72,7 @@ func (r *tableRepository) SaveData(ctx context.Context, table models.Table, data
 	}
 	defer func() {
 		if err := tx.Rollback(); err != nil && err != sql.ErrTxDone {
-			log.Debug("rollback failed", "err", err)
+			log.Debug("rollback failed", slog.Any("err", err))
 		}
 	}()
 
