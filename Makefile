@@ -29,6 +29,10 @@ down:
 down-and-clean:
 	docker-compose down -v
 
+# Swagger docs gen
+swagger-gen:
+	swag init -g cmd/api/main.go -o docs
+
 # Debugging
 debug:
 	@echo "Current directory: $(shell pwd)"

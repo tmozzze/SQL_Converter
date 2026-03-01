@@ -1,0 +1,51 @@
+basePath: /
+definitions:
+  handler.Response:
+    properties:
+      error:
+        type: string
+      status:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Service for converting CSV/XLSX files to PostgreSQL tables.
+  title: SQL Converter API
+  version: "1.0"
+paths:
+  /upload:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Accepts .csv or .xlsx, analyzes structure, creates a table in PG
+        and inserts data.
+      parameters:
+      - description: CSV or XLSX file
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.Response'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/handler.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.Response'
+      summary: Upload a file and create a table
+      tags:
+      - files
+swagger: "2.0"
