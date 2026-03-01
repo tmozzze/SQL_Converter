@@ -8,12 +8,6 @@ APP_NAME=SQL_Converter_api
 
 # MAKE Commands
 
-run:
-	go run cmd/api/main.go
-
-build:
-	go build -o bin/$(APP_NAME) cmd/api/main.go
-
 lint:
 	golangci-lint run --timeout 5m
 
