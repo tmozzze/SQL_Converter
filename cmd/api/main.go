@@ -7,6 +7,7 @@ import (
 
 	"github.com/tmozzze/SQL_Converter/internal/config"
 	"github.com/tmozzze/SQL_Converter/internal/repository/postgres"
+	"github.com/tmozzze/SQL_Converter/internal/service"
 	"github.com/tmozzze/SQL_Converter/pkg/database"
 )
 
@@ -36,9 +37,11 @@ func main() {
 
 	// Init Repos
 	repo := postgres.NewRepository(db, log)
-	fmt.Println(repo)
 
 	// Init Service
+	svc := service.NewService(repo, log)
+
+	fmt.Println(svc)
 
 	// Start Server (net/http)
 }
