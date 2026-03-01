@@ -27,8 +27,12 @@ func (r *tableRepository) Create(ctx context.Context, table models.Table) error 
 	// Generate query
 	var sb strings.Builder
 
+	// Delete table
+	quotedTableName := quoteIdentifier(table.Name)
+	sb.WriteString(fmt.Sprintf("DROP TABLE IF EXISTS %s CASCADE;", quotedTableName))
+
 	sb.WriteString("CREATE TABLE IF NOT EXISTS ")
-	sb.WriteString(quoteIdentifier(table.Name))
+	sb.WriteString(quotedTableName)
 	sb.WriteString(" (")
 
 	for i, col := range table.Columns {

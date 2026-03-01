@@ -39,6 +39,7 @@ func (s *service) SchemaAnalyzer() domain.SchemaAnalyzerService {
 	return s.schemaAnalyzer
 }
 
+// return ProcessorService
 func (s *service) Processor() domain.ProcessorService {
 	return s.processor
 }

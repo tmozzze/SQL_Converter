@@ -1,0 +1,4 @@
+client_id,client_fio,client_income,is_active
+101,Ivanov Ivan, 50000.50,true
+102,Petrov Petr, 60000,false
+103,Sidorov Sidr, 75000.25,true

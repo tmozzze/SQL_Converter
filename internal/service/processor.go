@@ -33,6 +33,7 @@ func newProcessorService(
 	}
 }
 
+// UploadFile - processing file (analyze, create table, save data)
 func (s *processorService) UploadFile(ctx context.Context, tableName string, file io.Reader, extension string) error {
 	const op = "service.processor.UploadFile"
 	log := s.log.With("op", op)
