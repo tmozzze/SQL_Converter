@@ -48,6 +48,14 @@ func (s *fileParserService) parseCSV(ctx context.Context, r io.Reader) ([][]stri
 	const op = "service.parser.parseCSV"
 	log := s.log.With("op", op)
 
+	// context checking
+	select {
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	default:
+	}
+
+	// parsing
 	reader := csv.NewReader(r)
 
 	rows, err := reader.ReadAll()
@@ -64,6 +72,14 @@ func (s *fileParserService) parseXLSX(ctx context.Context, r io.Reader) ([][]str
 	const op = "service.parser.parseXLSX"
 	log := s.log.With("op", op)
 
+	// context checking
+	select {
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	default:
+	}
+
+	// parsing
 	f, err := excelize.OpenReader(r)
 	if err != nil {
 		return nil, fmt.Errorf("%s: failed to open XLSX: %w", op, err)
